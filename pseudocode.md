@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # RENDER:
 RENDER UI based on what STATE the VARIABLES are in.
 
@@ -220,4 +219,3 @@ IF refresh button clicked DISPLAY page0
 ```
 
 # END
->>>>>>> dev
