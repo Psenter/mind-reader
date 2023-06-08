@@ -1,9 +1,11 @@
+//calls all html into JS
 let webPage = document.getElementById("webPage");
 let instruct = document.getElementById("instruct");
 let nextBtn = document.getElementById("next");
 let example = document.getElementById("example");
 let goRef = document.getElementById("goRef");
 
+//array containing each page
 let pages = [
   {
     instruct: "I can read your mind",
@@ -14,7 +16,7 @@ let pages = [
     instruct: "Pick a number from 01-99",
     nextBtn: "Next",
     example: "when you have your number click next",
-    goRef: "<img src='img/Refresh_icon.svg.png'>",
+    goRef: "<img src='img/Refresh_icon.svg.png'>"
   },
   {
     instruct: "Add both digits together to get a new number",
@@ -35,20 +37,25 @@ let pages = [
   },
   {
     instruct: "&",
+    nextBtn: false,
     example: 'Your symbol is: "&" ',
-    goRef: "<img src='img/Refresh_icon.svg.png'>",
+    goRef: "<img src='img/Refresh_icon.svg.png'>"
   }
 ];
 
+//array containing symbols for numbers
 let symbols = ["@", "#", "$", "%", "&"];
 
+//sets page to show first part of pages array
 let currentPage = 0;
 
+//function to change what is shown on page
 function nextPage() {
     currentPage++;
     render();
 }
 
+//function to make go button work and refresh button to send user to the first page
 function goBtn() {
     if (currentPage === 0) {
         nextPage();
@@ -59,21 +66,26 @@ function goBtn() {
     }
 }
 
+//event listener on go button so when clicked function is executed
 goRef.addEventListener('click', goBtn);
 
+//event listener for next button so page changes on click
 nextBtn.addEventListener('click', nextPage);
 
+//renders the array onto the screen
 function render() {
     instruct.textContent = pages[currentPage].instruct;
     example.textContent = pages[currentPage].example;
     goRef.innerHTML = pages[currentPage].goRef;
+    //hides next button when needed to be hidden
     if (pages[currentPage].nextBtn === false) {
         nextBtn.style.visibility = 'hidden';
     }
     else {
         nextBtn.style.visibility = 'visible';
-        nextBtn.textContent = 'Next'
+        nextBtn.textContent = pages[currentPage].nextBtn;
     }
 }
 
+//executes the render function
 render();
