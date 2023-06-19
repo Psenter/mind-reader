@@ -31,13 +31,13 @@ let pages = [
     goRef: "↻"
   },
   {
-    instruct: "",
+    instruct: null,
     nextBtn: "Reveal",
     example: "Find your new number. Note the symbol beside the number",
     goRef: "↻"
   },
   {
-    instruct: "",
+    instruct: null,
     nextBtn: false,
     example: "",
     goRef: "↻"
@@ -75,12 +75,7 @@ nextBtn.addEventListener('click', nextPage);
 
 //renders the array onto the screen
 function render() {
-    if (pages[currentPage].instruct === true) {
-      instruct.textContent = multiNine();
-    }
-    else {
-      instruct.textContent = pages[currentPage].instruct;
-    }
+    instruct.textContent = pages[currentPage].instruct;
     example.textContent = pages[currentPage].example;
     goRef.innerHTML = pages[currentPage].goRef;
     //hides next button when needed to be hidden
@@ -91,24 +86,27 @@ function render() {
         nextBtn.style.visibility = 'visible';
         nextBtn.textContent = pages[currentPage].nextBtn;
     }
+    if (pages[currentPage].instruct === null) {
+      pages[currentPage].instruct = multiNine();
+    }
 }
 
 let chosenSymbol = symbols[Math.floor(Math.random() * symbols.length)];
 
-//create string
-//concat nums and symbols into one string
-//return string
 function multiNine() {
-  var str = '';
-  chosenSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+  //capture string to return
+  //create string variable to hold all
+  // remove return
+  //concatanate the string
+  //at end of function return string and functions
+  var str = "";
+  let chosenSymbol = symbols[Math.floor(Math.random() * symbols.length)];
   for (let i = 0; i < 100; i++) {
     if (i % 9 === 0) {
-      str = str + i + ' = ' + chosenSymbol + '</br>';
-    }
-    else {
-      const randomSymbol = Math.floor(Math.random() * symbols.length);
-      const item = symbols[randomSymbol];
-      str = str + i + ' = ' + item + '</br>';
+      str = str + i + " = " + chosenSymbol + "<br>";
+    } else {
+      let randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+      str = str + i + " = " + randomSymbol + "<br>";
     }
   }
   pages[5].instruct = chosenSymbol;
