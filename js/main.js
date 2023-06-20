@@ -31,13 +31,13 @@ let pages = [
     goRef: "↻"
   },
   {
-    instruct: null,
+    instruct: false,
     nextBtn: "Reveal",
     example: "Find your new number. Note the symbol beside the number",
     goRef: "↻"
   },
   {
-    instruct: null,
+    instruct: false,
     nextBtn: false,
     example: "",
     goRef: "↻"
@@ -86,14 +86,14 @@ function render() {
         nextBtn.style.visibility = 'visible';
         nextBtn.textContent = pages[currentPage].nextBtn;
     }
-    if (pages[currentPage].instruct === null) {
-      pages[currentPage].instruct = multiNine();
+    if (pages[currentPage].instruct === false) {
+      instruct.textContent = divisNine();
     }
 }
 
 let chosenSymbol = symbols[Math.floor(Math.random() * symbols.length)];
 
-function multiNine() {
+function divisNine() {
   //capture string to return
   //create string variable to hold all
   // remove return
@@ -103,15 +103,16 @@ function multiNine() {
   let chosenSymbol = symbols[Math.floor(Math.random() * symbols.length)];
   for (let i = 0; i < 100; i++) {
     if (i % 9 === 0) {
-      str = str + i + " = " + chosenSymbol + "<br>";
+      str = str + i + "=" + chosenSymbol + " ";
     } else {
       let randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-      str = str + i + " = " + randomSymbol + "<br>";
+      str = str + i + "=" + randomSymbol + " ";
     }
   }
   pages[5].instruct = chosenSymbol;
   pages[4].instruct = str;
 }
+
 
 //executes the render function
 render();
