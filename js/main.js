@@ -15,7 +15,7 @@ let state = {
 
         { title: "Subtract your new number from the orginial number", nextbtn: "NEXT", t1: "Ex: 14 - 5 = 9 <br> click next to proceed", goReset: "↻"},
 
-        { title: "0 - & <br> 1 - @ <br> 2 - $ <br> 3 - B", nextbtn: "REVEAL", t1: "Find your new number <br> Note the symbol beside the number", goReset: "↻"},
+        { title: "", nextbtn: "REVEAL", t1: "Find your new number <br> Note the symbol beside the number", goReset: "↻"},
 
         { title:"&", hideNextbtn: true, t1: "Your symbol is: <br> &", goReset: "↻"}
     ]
@@ -71,6 +71,16 @@ function resetPage() {
         }
     }
 }
+
+function generateNumbers() {
+    const numbers = [];
+    for (let i = 1; i < 100; i++) {
+        numbers.push(i);
+    }
+    return numbers;
+}
+
+state.pagesArr[4].title = generateNumbers().map(numbers => numbers + " - ").join("<br>");
 
 nextbtn.addEventListener("click", nextPage);
 goReset.addEventListener("click", resetPage);
