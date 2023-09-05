@@ -35,4 +35,44 @@ function init() {
     }
 }
 
+function nextPage() {
+    state.pageIndex = state.pageIndex + 1
+
+    title.innerHTML = state.pagesArr[state.pageIndex].title;
+    nextbtn.innerHTML = state.pagesArr[state.pageIndex].nextbtn;
+    t1.innerHTML = state.pagesArr[state.pageIndex].t1;
+    goReset.innerHTML = state.pagesArr[state.pageIndex].goReset;
+
+    if (state.pagesArr[state.pageIndex].hideNextbtn) {
+        nextbtn.style.display = "none";
+    }
+    else {
+        nextbtn.style.display = "block";
+    }
+}
+
+function resetPage() {
+    if (goReset.innerHTML === "GO") {
+        nextPage();
+    }
+    else if (goReset.innerHTML === "↻"){
+        state.pageIndex = 0
+
+        title.innerHTML = state.pagesArr[state.pageIndex].title;
+        nextbtn.innerHTML = state.pagesArr[state.pageIndex].nextbtn;
+        t1.innerHTML = state.pagesArr[state.pageIndex].t1;
+        goReset.innerHTML = state.pagesArr[state.pageIndex].goReset;
+
+        if (state.pagesArr[state.pageIndex].hideNextbtn) {
+            nextbtn.style.display = "none";
+        }
+        else {
+            nextbtn.style.display = "block";
+        }
+    }
+}
+
+nextbtn.addEventListener("click", nextPage);
+goReset.addEventListener("click", resetPage);
+
 init();
