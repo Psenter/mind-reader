@@ -5,3 +5,39 @@
 .title-txt {
     font-size: 75px;
 }
+
+.light-blue-txt {
+    color: #8bd8e2;
+}
+
+.btn-txt {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.bg-light-blue {
+    background-color: #8bd8e2;
+}
+
+.next-btn-txt {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.t1-txt {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+h1 {
+    height: 600px;
+    width: 100%;
+}
+
+h1 {
+    overflow-y: scroll;
+}
+
+h1::-webkit-scrollbar{
+    display: none;
+}
